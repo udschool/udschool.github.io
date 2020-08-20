@@ -141,7 +141,7 @@ function findPosition(obj) {
 } 
 
 function printSortVis() {
-	var sortVisLayout = ['<div class="sort__body-wrapper"> <label for="cars">Визуализация</label> <select name="vis" id="vis" onclick="updateSortVis(value)">'];
+	var sortVisLayout = ['<div class="sort__body"> <label for="cars">Визуализация</label> <select name="vis" id="vis" onclick="updateSortVis(value)">'];
 	visOptions.forEach(function(entry) {
 		sortVisLayout.push(`<option value="${entry}">${entry}</option>`);
 	});
