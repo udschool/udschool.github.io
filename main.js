@@ -72,15 +72,12 @@ function printProducts(data, callback) {
 }
 
 function printProductsVis(data, isVis, callback) {
-	console.log(isVis);
 	var productsVisLayout = [];
 	if (isVis == 'true') {
 		data.items.forEach(function(item) {
-			console.log(item.attributes);
 			if (item.attributes) {
 				item.attributes.forEach(function(attr) {
 					if (attr.name == 'Визуализация') {
-						console.log('идём по Визуализация');
 						if (attr.value == 'true') {
 							let id = item.id;
 							productsVisLayout.push(`<div class="item ecsp ecsp-SingleProduct-v2 ecsp-SingleProduct-v2-bordered ecsp-Product ec-Product-${id}" itemscope itemtype="http://schema.org/Product" data-single-product-id="${id}"> <a onclick="putProductId('${id}')"> <div itemprop="image"></div><div class="ecsp-title" itemprop="name" content="ПУФ"></div><div itemtype="http://schema.org/Offer" itemscope itemprop="offers"> </a> <div class="ecsp-productBrowser-price ecsp-price" itemprop="price" content="1"> <div itemprop="priceCurrency" content="RUB"></div></div></div><div customprop="options"></div><div customprop="addtobag"></div></div>`);
@@ -91,11 +88,9 @@ function printProductsVis(data, isVis, callback) {
 		});
 	} else if (isVis == 'false') {
 		data.items.forEach(function(item) {
-			console.log(item.attributes);
 			if (item.attributes) {
 				item.attributes.forEach(function(attr) {
 					if (attr.name == 'Визуализация') {
-						console.log('идём по не визуализация');
 						if (attr.value != 'true') {
 							let id = item.id;
 							productsVisLayout.push(`<div class="item ecsp ecsp-SingleProduct-v2 ecsp-SingleProduct-v2-bordered ecsp-Product ec-Product-${id}" itemscope itemtype="http://schema.org/Product" data-single-product-id="${id}"> <a onclick="putProductId('${id}')"> <div itemprop="image"></div><div class="ecsp-title" itemprop="name" content="ПУФ"></div><div itemtype="http://schema.org/Offer" itemscope itemprop="offers"> </a> <div class="ecsp-productBrowser-price ecsp-price" itemprop="price" content="1"> <div itemprop="priceCurrency" content="RUB"></div></div></div><div customprop="options"></div><div customprop="addtobag"></div></div>`);
@@ -113,17 +108,13 @@ function printProductsVis(data, isVis, callback) {
 
 function renderProducts(layout) {
 	if (layout.length > 0) {
-			console.log('Возвращаем старый массив');
 	} else if (layout.length == 0) {
 			layout.push(`<div class="product__notfound-wrapper"> <p>По данному запросу нет товаров. Мы работаем над этим :)</p></div>`);
-			console.log('Возвращаем массив 404');
 	}
 	$('#t').html(layout.join(""));
-	console.log($('#t'));
 }
 
 function printCategories(data, callback) {
-	console.log(data);
 	var categoriesLayout = [];
 	data.items.forEach(function(item) {
 		let name = item.name;
@@ -165,17 +156,13 @@ function setValueVisOption() {
 	var visOption = url.get(visParam);
 	if (currentUrl.indexOf(visParam) == -1) {
 		document.getElementById("vis").value = "Все"; 	
-		console.log('Все мейн');
 	} else {
 		if (visOption == 'false') {
 			document.getElementById("vis").value = "без визуализации"; 	
-			console.log('без визуализации');
 		} else if (visOption == 'true') {
 			document.getElementById("vis").value = "с визуализацией"; 	
-			console.log('с визуализацией');
 		} else {
 			document.getElementById("vis").value = "Все";	
-			console.log('Все второй');
 		}
 	}
 }
