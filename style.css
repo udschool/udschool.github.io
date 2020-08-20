@@ -189,3 +189,9 @@ ul {
   .footer__logo{
   padding-right: 0px;
 }
+
+.ec-cart-widget {
+  position: fixed;
+  bottom: 100px;
+  right: 100px;
+}
