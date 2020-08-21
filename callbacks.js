@@ -4,7 +4,7 @@ function updateSortVis(value) {
 	var urlIf = window.location.href.split('?vis')[0];
 	var currentUrl = window.location.href;
 	var ifCategory = window.location.search.toString();
-	if (currentUrl.indexOf('filter') == -1) {
+	if ((currentUrl.indexOf('filter') == -1) & (currentUrl.indexOf('search') == -1)) {
 		if ((value == 'Все') && (currentUrl.indexOf('vis') == -1)) {
 			console.log('Возвращаем Все продукты');
 		} else if((value == 'Все') && (currentUrl.indexOf('vis') != -1)) {
@@ -18,7 +18,7 @@ function updateSortVis(value) {
 		} else if ((value == 'с визуализацией') && (currentUrl.indexOf('vis=true') != -1)) {
 			console.log('Возвращаем с визуализацией');
 		}
-	} else if (currentUrl.indexOf('filter') != -1) {
+	} else {
 		if ((value == 'Все') && (currentUrl.indexOf('vis') == -1)) {
 			console.log('Возвращаем Все продукты по категории');
 		} else if ((value == 'Все') && (currentUrl.indexOf('vis') != -1)) {
@@ -33,6 +33,12 @@ function updateSortVis(value) {
 			console.log('Возвращаем с визуализацией');
 		}
 	}
+}
+
+function putSearchUrl() {
+  var url = window.location.href.split('?')[0];
+  var searchUrl = document.getElementById('search-value').value;
+  window.location.replace(url + `?search=${searchUrl}`);
 }
 
 function putParamsUrl (category) {
