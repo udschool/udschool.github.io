@@ -6,10 +6,7 @@ EcwidApp.init({
   autoheight: true
 });
 
-var storeData = EcwidApp.getPayload();
-
-var storeId = storeData.store_id;
-var accessToken = storeData.access_token;
+EcwidApp.openPage('products');
 console.log(accessToken);
 console.log(storeId);
 EcwidApp.ready();
