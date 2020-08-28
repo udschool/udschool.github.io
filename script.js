@@ -5,5 +5,11 @@ EcwidApp.init({
   autoloadedflag: true, 
   autoheight: true
 });
-console.log(EcwidApp);
+
+var storeData = EcwidApp.getPayload();
+
+var storeId = storeData.store_id;
+var accessToken = storeData.access_token;
+console.log(accessToken);
+console.log(storeId);
 EcwidApp.ready();
