@@ -46,7 +46,7 @@ function hiddenProductsFromStorefront(orders) {
 		entry.items.forEach(function(entry){
 			let element = `grid-product--id-${entry.productId}`;
 			console.log(element);
-			$(element).hide();
+			document.getElementsByClassName(element)[0].style.display = 'none';
 		});
 	});
 }
