@@ -11,6 +11,12 @@ Ecwid.OnPageLoaded.add(function(page) {
 				hiddenProductsFromStorefront(data);
 			});
 		});
+  	} else if (page.type == "PRODUCT") {
+  		Ecwid.OnSetProfile.add(function(customer) {
+			$.get(`https://app.ecwid.com/api/v3/35020171/orders?customer=${customer.email}&token=secret_dYSNe7rT6hY73H8HhAZeJNQMdmXxifLz`, function(data) {
+				downloadInsteadOfBuy(data);
+			});
+		});
   	}
 });
 
