@@ -61,7 +61,7 @@ function downloadInsteadOfBuy(orders) {
 		entry.items.forEach(function(entry){
 			let element = `.ecwid-productBrowser-ProductPage-${entry.productId}`;
 			if ($(element)) {
-				alert('Hello');
+				$('.details-product-purchase').html(`<div class="form-control form-control--button form-control--flexible form-control--animated form-control__button--icon-center form-control--done"> <a href="${entry.files[0].customerUrl}"> <button class="form-control__button" type="button"> <span class="form-control__button-text">Скачать</span> <span class="form-control__button-svg"> <span class="svg-icon"> <svg width="27" height="23" viewBox="0 0 27 23" xmlns="http://www.w3.org/2000/svg"> <path class="svg-line-check" d="M1.97 11.94L10.03 20 25.217 2" fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="3" stroke-linecap="round"></path> </svg> </span> </span> </button> </a></div>`);
 			}
 		});
 	});
