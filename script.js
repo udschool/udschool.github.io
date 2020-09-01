@@ -10,9 +10,9 @@ Ecwid.OnPageLoaded.add(function(page) {
   	} else if (page.type == "SEARCH") {
   		Ecwid.OnSetProfile.add(function(customer) {
 			console.log(customer);
-			setTimeout($.get(`https://app.ecwid.com/api/v3/35020171/orders?customer=${customer.email}&token=secret_dYSNe7rT6hY73H8HhAZeJNQMdmXxifLz`, function(data) {
+			$.get(`https://app.ecwid.com/api/v3/35020171/orders?customer=${customer.email}&token=secret_dYSNe7rT6hY73H8HhAZeJNQMdmXxifLz`, function(data) {
 				hiddenProductsFromStorefront(data);
-			}), 2000);
+			});
 		});
   	}
 });
