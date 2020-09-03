@@ -11,6 +11,7 @@ Ecwid.OnPageLoaded.add(function(page) {
 				hiddenProductsFromStorefront(data);
 			});
 		});
+  		printFilterMenu();
   	} else if (page.type == "PRODUCT") {
   		Ecwid.OnSetProfile.add(function(customer) {
 			$.get(`https://app.ecwid.com/api/v3/35020171/orders?customer=${customer.email}&token=secret_dYSNe7rT6hY73H8HhAZeJNQMdmXxifLz`, function(data) {
@@ -69,4 +70,60 @@ function downloadInsteadOfBuy(orders) {
 
 function openProductDetail(productId) {
 	Ecwid.openPage('product', {'id': productId});
+}
+
+function printFilterMenu() {
+	'use strict';
+
+	const e = React.createElement;
+
+	class LikeButton extends React.Component {
+		constructor(props) {
+			super(props);
+			this.state = { liked: false };
+		}
+
+		render() {
+			const state = {
+				attrs: [
+					{name: 'Визуализация', means:['С визуализацией']},
+					{name: 'Мебель', means:['стол журнальный', 'диван / софа', 'кровать', 'кресло', 'пуф', 'комоды и тумбы', 'прикроватная тумбочка', 'стеллаж', 'стол обеденный', 'стул']},
+					{name: 'Сантехника. Мебель для сан.узла', means:['ванна', 'смеситель']},
+					{name: 'Освещение. Электрика', means:['бра', 'люстра', 'точечный светильник / прожектор']},
+					{name: 'Элементы интерьера', means:['радиаторы', 'двери', 'окна']},
+					{name: 'Декор для кухни', means:['декоративные сеты для кухни', 'сервировка']},
+					{name: 'Декор для ванной', means:['аксессуары']},
+					{name: 'Декор универсальный', means:['постельное белье', 'ковры', 'другой декор универсальный', 'книги', 'скульптуры', 'часы', 'шторы']},
+					{name: 'Растения', means:['букеты в вазах']},
+					{name: 'Модели для животных', means:['модели для животных']},
+				]
+			};
+
+			return /*#__PURE__*/React.createElement("div", {
+				className: "filter-wrapper",
+				id: "Hello"
+			}, /*#__PURE__*/React.createElement("ul", {
+				"uk-accordion": "multiple: true"
+			}, state.attrs.map((attr, index) => {
+				return /*#__PURE__*/React.createElement("li", {
+					key: index
+				}, /*#__PURE__*/React.createElement("a", {
+					className: "uk-accordion-title",
+					href: "#"
+				}, attr.name), /*#__PURE__*/React.createElement("div", {
+					className: "uk-accordion-content"
+				}, attr.means.map((mean, key) => {
+					return /*#__PURE__*/React.createElement("p", {
+						key: key
+					}, /*#__PURE__*/React.createElement("label", null, /*#__PURE__*/React.createElement("input", {
+						className: "uk-checkbox",
+						type: "checkbox"
+					}), " ", mean));
+				})));
+			})));
+		}
+	}
+
+	const domContainer = document.querySelector('.ec-filters__body');
+	ReactDOM.render(e(LikeButton), domContainer);
 }
