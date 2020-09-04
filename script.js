@@ -11,7 +11,7 @@ Ecwid.OnPageLoaded.add(function(page) {
 				hiddenProductsFromStorefront(data);
 			});
 		});
-  		setTimeout(addTextBelowFilter('ec-filter--attribute-041c043e04340435043b0438-0434043b044f-043604380432043e0442043d044b0445'), 2000);
+  		setTimeout(addTextBelowFilter('ec-filter--attribute-041c043e04340435043b0438-0434043b044f-043604380432043e0442043d044b0445'), 4000);
   		// printFilterMenu();
   	} else if (page.type == "PRODUCT") {
   		Ecwid.OnSetProfile.add(function(customer) {
