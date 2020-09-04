@@ -11,7 +11,7 @@ Ecwid.OnPageLoaded.add(function(page) {
 				hiddenProductsFromStorefront(data);
 			});
 		});
-  		setTimeout(addTextBelowFilter(), 4000);
+  		setTimeout(addTextBelowFilter(), 6000);
   	} else if (page.type == "PRODUCT") {
   		Ecwid.OnSetProfile.add(function(customer) {
 			$.get(`https://app.ecwid.com/api/v3/35020171/orders?customer=${customer.email}&token=secret_dYSNe7rT6hY73H8HhAZeJNQMdmXxifLz`, function(data) {
