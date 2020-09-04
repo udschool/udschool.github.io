@@ -11,7 +11,7 @@ Ecwid.OnPageLoaded.add(function(page) {
 				hiddenProductsFromStorefront(data);
 			});
 		});
-  		setTimeout(addTextBelowFilter('.ec-filter--attribute-041c043e04340435043b0438-0434043b044f-043604380432043e0442043d044b0445'), 4000);
+  		setTimeout(addTextBelowFilter(), 4000);
   	} else if (page.type == "PRODUCT") {
   		Ecwid.OnSetProfile.add(function(customer) {
 			$.get(`https://app.ecwid.com/api/v3/35020171/orders?customer=${customer.email}&token=secret_dYSNe7rT6hY73H8HhAZeJNQMdmXxifLz`, function(data) {
@@ -70,11 +70,11 @@ function openProductDetail(productId) {
 	Ecwid.openPage('product', {'id': productId});
 }
 
-function addTextBelowFilter(element){
+function addTextBelowFilter(){
 	let div = document.createElement('div');
 	div.className = 'ec-filter__alert'
-	div.innerHTML = '<strong>Фильтры:</strong>';
-	document.querySelector(element).append(div);
+	div.innerHTML = "<strong>Фильтры:</strong>";
+	document.querySelector('.ec-filter--attribute-041c043e04340435043b0438-0434043b044f-043604380432043e0442043d044b0445').append(div);
 }
 
 function printFilterMenu() {
