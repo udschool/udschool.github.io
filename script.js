@@ -11,6 +11,7 @@ Ecwid.OnPageLoaded.add(function(page) {
 				hiddenProductsFromStorefront(data);
 			});
 		});
+  		addTextBelowFilter('.ec-filter--attribute-04140435043a043e0440-0443043d043804320435044004410430043b044c043d044b0439');
   		// printFilterMenu();
   	} else if (page.type == "PRODUCT") {
   		Ecwid.OnSetProfile.add(function(customer) {
@@ -68,6 +69,13 @@ function downloadInsteadOfBuy(orders) {
 
 function openProductDetail(productId) {
 	Ecwid.openPage('product', {'id': productId});
+}
+
+function addTextBelowFilter(element){
+	let div = document.createElement('div');
+	div.className = 'ec-filter__alert'
+	div.innerHTML = '<strong>Всем привет!</strong>';
+	document.querySelector(element).append(div);
 }
 
 function printFilterMenu() {
