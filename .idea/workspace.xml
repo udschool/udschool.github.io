@@ -1,7 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="ff4c80cd-874c-4b10-bd77-7ade405c5284" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/script.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -23,6 +43,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../ecwid-api" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -36,17 +57,33 @@
       <updated>1599214533811</updated>
       <workItem from="1599214542704" duration="2195000" />
       <workItem from="1599220635119" duration="199000" />
-      <workItem from="1599225206020" duration="3536000" />
+      <workItem from="1599225206020" duration="3969000" />
+      <workItem from="1599463067914" duration="131000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="WindowStateProjectService">
     <state x="2469" y="204" key="FileChooserDialogImpl" timestamp="1599220831877">
       <screen x="1920" y="0" width="1538" height="900" />
     </state>
     <state x="2469" y="204" key="FileChooserDialogImpl/62.0.1858.1080/1920.0.1538.900@1920.0.1538.900" timestamp="1599220831877" />
+    <state x="2205" y="95" key="SettingsEditor" timestamp="1599463041850">
+      <screen x="1920" y="0" width="1538" height="900" />
+    </state>
+    <state x="2205" y="95" key="SettingsEditor/62.0.1858.1080/1920.0.1538.900@1920.0.1538.900" timestamp="1599463041850" />
   </component>
 </project>
