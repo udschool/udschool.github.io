@@ -12,10 +12,12 @@ Ecwid.OnPageLoaded.add(function(page) {
 			});
 		});
   		setTimeout(()=>{
-			let div = document.createElement('div');
-			div.className = 'ec-filter__alert'
-			div.innerHTML = "<strong>ФИЛЬТРЫ:</strong>";
-			document.querySelector('.ec-filter--attribute-041c043e04340435043b0438-0434043b044f-043604380432043e0442043d044b0445').append(div);
+			if (!document.querySelector('.ec-filter__alert')) {
+				let div = document.createElement('div');
+				div.className = 'ec-filter__alert'
+				div.innerHTML = "<strong>ФИЛЬТРЫ:</strong>";
+				document.querySelector('.ec-filter--attribute-041c043e04340435043b0438-0434043b044f-043604380432043e0442043d044b0445').append(div);
+			}
 		}, 6000);
   	} else if (page.type == "PRODUCT") {
   		Ecwid.OnSetProfile.add(function(customer) {
