@@ -1,4 +1,31 @@
 Ecwid.OnPageLoaded.add(function(page) {
+
+	var storeData = EcwidApp.getPayload();
+    var storeId = storeData.store_id;
+    var accessToken = storeData.access_token;
+    var language = storeData.lang;
+    var viewMode = storeData.view_mode;
+
+    EcwidApp.init({
+	  app_id: "custom-app-35020171-1", // use your application client_id
+	  autoloadedflag: false, 
+	  autoheight: true
+	});
+
+	EcwidApp.ready();
+
+	EcwidApp.getAppStorage('public', function(value){
+	  console.log(value);
+	  // '{ "color" : "red", "page_id" : "123456" }'
+
+	  publicConfig = value;
+	})
+
+	publicConfig = JSON.parse(publicConfig);
+
+	console.log(publicConfig.color);
+
+
 	if (page.type == "ACCOUNT_SETTINGS") {
 		Ecwid.OnSetProfile.add(function(customer) {
 			$.get(`https://app.ecwid.com/api/v3/35020171/orders?customer=${customer.email}&token=secret_dYSNe7rT6hY73H8HhAZeJNQMdmXxifLz`, function(data) {
@@ -27,6 +54,8 @@ Ecwid.OnPageLoaded.add(function(page) {
 		});
   	}
 });
+
+
 
 function printProductsInCart (orders, callback) {
 	if(orders.items.length !== 0) {
