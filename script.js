@@ -1,5 +1,6 @@
 Ecwid.OnPageLoaded.add(function(page) {
 	if (page.type == "ACCOUNT_SETTINGS") {
+		removeHeaderBanner();
 		Ecwid.OnSetProfile.add(function(customer) {
 			$.get(`https://app.ecwid.com/api/v3/35020171/orders?customer=${customer.email}&token=secret_dYSNe7rT6hY73H8HhAZeJNQMdmXxifLz`, function(data) {
 				printProductsInCart(data, renderProducts.bind(this));
@@ -21,6 +22,7 @@ Ecwid.OnPageLoaded.add(function(page) {
 			}
 		}, 6000);
   	} else if (page.type == "PRODUCT") {
+  		removeHeaderBanner();
   		Ecwid.OnSetProfile.add(function(customer) {
 			$.get(`https://app.ecwid.com/api/v3/35020171/orders?customer=${customer.email}&token=secret_dYSNe7rT6hY73H8HhAZeJNQMdmXxifLz`, function(data) {
 				downloadInsteadOfBuy(data);
@@ -30,7 +32,13 @@ Ecwid.OnPageLoaded.add(function(page) {
 });
 
 function printHeaderBanner() {
-	$('#banner__search').html(`<div class="banner-wrapper"><video autoplay muted loop id="myVideo"> <source src="https://fs.getcourse.ru/fileservice/file/download/a/27025/sc/235/h/2cb6f7fd72890ab31af7a2ec300149d8.mp4" type="video/mp4"> Your browser does not support HTML5 video.</video><div class="banner"> <div class="banner__logo"> <img src="https://static.tildacdn.com/tild6235-3762-4261-b532-653439373339/logo_banner.png" alt="logo"> </div><div class="banner__desc"> Качественные модели<br>для SketchUp </div></div></div>`);
+	$('#banner__search').html(`<div class="banner-wrapper" id="banner1"><video autoplay muted loop id="myVideo"> <source src="https://fs.getcourse.ru/fileservice/file/download/a/27025/sc/235/h/2cb6f7fd72890ab31af7a2ec300149d8.mp4" type="video/mp4"> Your browser does not support HTML5 video.</video><div class="banner"> <div class="banner__logo"> <img src="https://static.tildacdn.com/tild6235-3762-4261-b532-653439373339/logo_banner.png" alt="logo"> </div><div class="banner__desc"> Качественные модели<br>для SketchUp </div></div></div>`);
+}
+
+function removeHeaderBanner() {
+	if (document.getElementById('banner1')) {
+		document.getElementById('banner__search').removeChild(document.getElementById('banner1'));
+	}
 }
 
 function printProductsInCart (orders, callback) {
