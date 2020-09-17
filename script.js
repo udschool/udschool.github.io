@@ -35,7 +35,7 @@ function printHeaderBanner() {
 	if (screen.width > 981) {
 		$('#banner__search').html(`<div class="banner-wrapper" id="banner1"><video autoplay muted loop id="myVideo"> <source src="https://fs.getcourse.ru/fileservice/file/download/a/27025/sc/235/h/2cb6f7fd72890ab31af7a2ec300149d8.mp4" type="video/mp4"> Your browser does not support HTML5 video.</video><div class="banner"> <div class="banner__logo"> <img src="https://static.tildacdn.com/tild6235-3762-4261-b532-653439373339/logo_banner.png" alt="logo"> </div><div class="banner__desc"> Качественные модели<br>для SketchUp </div></div></div>`);
 	} else {
-		$('#banner__search').html(`<div>Hello</div>`);
+		$('#banner__search').html(`<div class="banner__mobile"> <div class="banner__logo-wrapper"> <img src="https://static.tildacdn.com/tild6235-3762-4261-b532-653439373339/logo_banner.png" alt="logo" class="banner__logo"> <p class="banner__desc">Качественные модели <br>для SketchUp</p></div></div>`);
 	}
 }
 
