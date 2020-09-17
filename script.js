@@ -1,6 +1,7 @@
 Ecwid.OnPageLoaded.add(function(page) {
 	if (page.type == "ACCOUNT_SETTINGS") {
 		removeHeaderBanner();
+		removeIp();
 		Ecwid.OnSetProfile.add(function(customer) {
 			$.get(`https://app.ecwid.com/api/v3/35020171/orders?customer=${customer.email}&token=secret_dYSNe7rT6hY73H8HhAZeJNQMdmXxifLz`, function(data) {
 				printProductsInCart(data, renderProducts.bind(this));
@@ -8,6 +9,7 @@ Ecwid.OnPageLoaded.add(function(page) {
 		});
   	} else if (page.type == "SEARCH") {
   		printHeaderBanner();
+  		printIp();
   		Ecwid.OnSetProfile.add(function(customer) {
 			$.get(`https://app.ecwid.com/api/v3/35020171/orders?customer=${customer.email}&token=secret_dYSNe7rT6hY73H8HhAZeJNQMdmXxifLz`, function(data) {
 				hiddenProductsFromStorefront(data);
@@ -23,6 +25,7 @@ Ecwid.OnPageLoaded.add(function(page) {
 		}, 6000);
   	} else if (page.type == "PRODUCT") {
   		removeHeaderBanner();
+  		removeIp();
   		Ecwid.OnSetProfile.add(function(customer) {
 			$.get(`https://app.ecwid.com/api/v3/35020171/orders?customer=${customer.email}&token=secret_dYSNe7rT6hY73H8HhAZeJNQMdmXxifLz`, function(data) {
 				downloadInsteadOfBuy(data);
@@ -42,6 +45,16 @@ function printHeaderBanner() {
 function removeHeaderBanner() {
 	if (document.getElementById('banner1')) {
 		document.getElementById('banner__search').removeChild(document.getElementById('banner1'));
+	}
+}
+
+function printIp() {
+	$('#Ip').html('Индивидуальный предприниматель Афонская Полина Викторовна <br>196634, Санкт-Петербург, п.Шушары, ул. Ростовская (Славянка) 14-16, кв.82<br>ОГРНИП 318784700077123<br>ИНН: 246212605306<br>Расчетный счет: 40802810732250001716<br>Название Банка: ФИЛИАЛ "САНКТ-ПЕТЕРБУРГСКИЙ" АО "АЛЬФА-БАНК"<br>Кор.счет: 30101810600000000786<br>БИК: 044030786<br>')
+}
+
+function removeIp() {
+	if (document.getElementById('Ip')) {
+		document.getElementById('parentIp').removeChild(document.getElementById('Ip'));
 	}
 }
 
