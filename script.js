@@ -20,7 +20,7 @@ Ecwid.OnPageLoaded.add(function(page) {
 				let div = document.createElement('div');
 				div.className = 'ec-filter__alert'
 				div.innerHTML = "<strong>ФИЛЬТРЫ:</strong>";
-				document.querySelector('.ec-filter--attribute-041c043e04340435043b0438-0434043b044f-043604380432043e0442043d044b0445').append(div);
+				document.querySelector('ec-filter--attribute-041e044204340435043b043e0447043d044b0435-043c043004420435044004380430043b044b').append(div);
 			}
 		}, 6000);
   	} else if (page.type == "PRODUCT") {
