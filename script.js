@@ -31,6 +31,8 @@ Ecwid.OnPageLoaded.add(function(page) {
 				downloadInsteadOfBuy(data);
 			});
 		});
+  	} else if (page.type == "CART") {
+  		removeIp();
   	}
 });
 
@@ -53,8 +55,8 @@ function printIp() {
 }
 
 function removeIp() {
-	if (document.getElementById('Ip')) {
-		document.getElementById('parentIp').removeChild(document.getElementById('Ip'));
+	if (document.getElementById('parentRemove')) {
+		document.getElementById('parentRemove').removeChild(document.getElementById('childRemove'));
 	}
 }
 
