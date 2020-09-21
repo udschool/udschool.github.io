@@ -43,8 +43,13 @@ Ecwid.OnPageLoaded.add(function(page) {
 });
 
 function changePreloader(element) {
-	if (document.getElementsByClassName(element)[0]) {
+	if (document.querySelector(element)) {
+		console.log('remove preloader');
 		document.querySelector('#banner__search').style.display="none";
+	} else {
+		setTimeout(function(){
+			document.querySelector('#banner__search').style.display="none";
+		}, 2000);
 	}
 }
 
