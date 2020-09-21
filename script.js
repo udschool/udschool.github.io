@@ -49,12 +49,12 @@ Ecwid.OnPageLoaded.add(function(page) {
 });
 
 function changePreloader(element) {
-	if (document.querySelector(element)) {
+	if (document.querySelector(element)&&(window.pageYOffset===0)) {
 		document.querySelector('#banner__search').style.display="none";
 	} else {
 		setTimeout(function(){
 			document.querySelector('#banner__search').style.display="none";
-		}, 2000);
+		}, 4000);
 	}
 }
 
