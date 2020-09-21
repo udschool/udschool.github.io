@@ -62,7 +62,7 @@ function printHeaderBanner() {
 	if (screen.width > 981) {
 		$('#banner__head').html(`<div class="banner-wrapper" id="banner1"><video autoplay muted loop id="myVideo"> <source src="https://fs.getcourse.ru/fileservice/file/download/a/27025/sc/235/h/2cb6f7fd72890ab31af7a2ec300149d8.mp4" type="video/mp4"> Your browser does not support HTML5 video.</video><div class="banner"> <div class="banner__logo"> <img src="https://static.tildacdn.com/tild6235-3762-4261-b532-653439373339/logo_banner.png" alt="logo"> </div><div class="banner__desc"> Качественные модели<br>для SketchUp </div></div></div>`);
 	} else {
-		$('#banner__head').html(`<div class="banner__mobile uk-background-cover uk-height-medium uk-panel uk-flex uk-flex-center uk-flex-middle" style="background-image: url(https://static.tildacdn.com/tild3961-3632-4065-b063-363339636238/Enscape_2020-09-09-1.jpg);"> <div class="banner__logo-wrapper"> <img src="https://static.tildacdn.com/tild6561-6136-4339-b436-366435396334/d67d1035-b6d6-4c7c-8.jpg" alt="logo" class="banner__logo"> <p class="banner__desc">Качественные модели <br>для SketchUp</p></div></div>`);
+		$('#banner__head').html(`<div class="banner__mobile uk-background-cover uk-height-medium uk-panel uk-flex uk-flex-center uk-flex-middle" style="background-image: url(https://static.tildacdn.com/tild6561-6136-4339-b436-366435396334/d67d1035-b6d6-4c7c-8.jpg);"> <div class="banner__logo-wrapper"> <img src="https://static.tildacdn.com/tild6235-3762-4261-b532-653439373339/logo_banner.png" alt="logo" class="banner__logo"> <p class="banner__desc">Качественные модели <br>для SketchUp</p></div></div>`);
 	}
 }
 
