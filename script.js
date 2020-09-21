@@ -7,6 +7,7 @@ Ecwid.OnPageLoaded.add(function(page) {
 				printProductsInCart(data, renderProducts.bind(this));
 			});
 		});
+		changePreloader('.grid__products');
   	} else if (page.type == "CATEGORY") {
   		Ecwid.openPage('search');
   	} else if (page.type == "SEARCH") {
@@ -17,6 +18,7 @@ Ecwid.OnPageLoaded.add(function(page) {
 				hiddenProductsFromStorefront(data);
 			});
 		});
+		changePreloader('.grid__products');
   		setTimeout(()=>{
 			if (!document.querySelector('.ec-filter__alert')) {
 				let div = document.createElement('div');
@@ -33,10 +35,18 @@ Ecwid.OnPageLoaded.add(function(page) {
 				downloadInsteadOfBuy(data);
 			});
 		});
+		changePreloader('.product-details');
   	} else if (page.type == "CART") {
   		removeIp();
+  		changePreloader('.ec-cart');
   	}
 });
+
+function changePreloader(element) {
+	if (document.getElementsByClassName(element)[0]) {
+		document.querySelector('#banner__search').style.display="none";
+	}
+}
 
 function printHeaderBanner() {
 	if (screen.width > 981) {
