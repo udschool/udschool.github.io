@@ -1,12 +1,12 @@
 Ecwid.OnPageLoaded.add(function(page) {
 	if (page.type == "ACCOUNT_SETTINGS") {
-		removeHeaderBanner();
-		removeIp();
 		Ecwid.OnSetProfile.add(function(customer) {
 			$.get(`https://app.ecwid.com/api/v3/35020171/orders?customer=${customer.email}&token=secret_dYSNe7rT6hY73H8HhAZeJNQMdmXxifLz`, function(data) {
 				printProductsInCart(data, renderProducts.bind(this));
 			});
 		});
+		removeHeaderBanner();
+		removeIp();
 		changePreloader('.grid__products');
   	} else if (page.type == "CATEGORY") {
   		Ecwid.openPage('search');
@@ -28,13 +28,13 @@ Ecwid.OnPageLoaded.add(function(page) {
 			}
 		}, 6000);
   	} else if (page.type == "PRODUCT") {
-  		removeHeaderBanner();
-  		removeIp();
   		Ecwid.OnSetProfile.add(function(customer) {
 			$.get(`https://app.ecwid.com/api/v3/35020171/orders?customer=${customer.email}&token=secret_dYSNe7rT6hY73H8HhAZeJNQMdmXxifLz`, function(data) {
 				downloadInsteadOfBuy(data);
 			});
 		});
+		removeHeaderBanner();
+  		removeIp();
 		changePreloader('.product-details');
   	} else if (page.type == "CART") {
   		removeIp();
