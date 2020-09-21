@@ -17,6 +17,7 @@ Ecwid.OnPageLoaded.add(function(page) {
   		Ecwid.openPage('search');
   	} else if (page.type == "SEARCH") {
   		printHeaderBanner();
+  		window.scrollTo(0,0);
   		printIp();
   		Ecwid.OnSetProfile.add(function(customer) {
 			$.get(`https://app.ecwid.com/api/v3/35020171/orders?customer=${customer.email}&token=secret_dYSNe7rT6hY73H8HhAZeJNQMdmXxifLz`, function(data) {
