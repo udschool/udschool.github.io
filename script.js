@@ -8,6 +8,10 @@ Ecwid.OnPageLoaded.add(function(page) {
 		removeHeaderBanner();
 		removeIp();
 		changePreloader('.grid__products');
+  	} else if (page.type == "SIGN_IN") {
+  		removeHeaderBanner();
+		removeIp();
+		changePreloader('.ec-signin');
   	} else if (page.type == "CATEGORY") {
   		Ecwid.openPage('search');
   	} else if (page.type == "SEARCH") {
