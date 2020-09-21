@@ -48,7 +48,7 @@ Ecwid.OnPageLoaded.add(function(page) {
 });
 
 function changePreloader(element) {
-	if (document.querySelector(element)&&(window.pageYOffset===0)) {
+	if (document.querySelector(element)) {
 		window.scrollTo(0,0);
 		document.querySelector('#banner__search').style.display="none";
 	} else {
