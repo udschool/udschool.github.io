@@ -7,6 +7,8 @@ Ecwid.OnPageLoaded.add(function(page) {
 				printProductsInCart(data, renderProducts.bind(this));
 			});
 		});
+  	} else if (page.type == "CATEGORY") {
+  		Ecwid.openPage('search');
   	} else if (page.type == "SEARCH") {
   		printHeaderBanner();
   		printIp();
