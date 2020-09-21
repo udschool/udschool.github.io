@@ -17,7 +17,6 @@ Ecwid.OnPageLoaded.add(function(page) {
   		Ecwid.openPage('search');
   	} else if (page.type == "SEARCH") {
   		printHeaderBanner();
-  		window.scrollTo(0,0);
   		printIp();
   		Ecwid.OnSetProfile.add(function(customer) {
 			$.get(`https://app.ecwid.com/api/v3/35020171/orders?customer=${customer.email}&token=secret_dYSNe7rT6hY73H8HhAZeJNQMdmXxifLz`, function(data) {
@@ -50,9 +49,11 @@ Ecwid.OnPageLoaded.add(function(page) {
 
 function changePreloader(element) {
 	if (document.querySelector(element)&&(window.pageYOffset===0)) {
+		window.scrollTo(0,0);
 		document.querySelector('#banner__search').style.display="none";
 	} else {
 		setTimeout(function(){
+			window.scrollTo(0,0);
 			document.querySelector('#banner__search').style.display="none";
 		}, 4000);
 	}
