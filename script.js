@@ -13,7 +13,6 @@ Ecwid.OnPageLoaded.add(function(page) {
 		removeIp();
 		changePreloader('.ec-signin');
   	} else if (page.type == "CATEGORY") {
-  		printHeaderBanner();
   		Ecwid.openPage('search');
   	} else if (page.type == "SEARCH") {
   		printHeaderBanner();
