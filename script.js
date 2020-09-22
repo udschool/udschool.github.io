@@ -13,13 +13,11 @@ Ecwid.OnPageLoaded.add(function(page) {
 		removeIp();
 		hidePreloader('.ec-signin');
   	} else if (page.type == "CATEGORY") {
-  		showPreloader();
   		window.ec = window.ec || Object();
 		window.ec.config = window.ec.config || Object();
 		window.ec.config.navigation_scrolling = "DISABLED";
   		Ecwid.openPage('search');
   	} else if (page.type == "SEARCH") {
-  		showPreloader();
   		printHeaderBanner();
   		printIp();
   		Ecwid.OnSetProfile.add(function(customer) {
