@@ -13,6 +13,9 @@ Ecwid.OnPageLoaded.add(function(page) {
 		removeIp();
 		changePreloader('.ec-signin');
   	} else if (page.type == "CATEGORY") {
+  		window.ec = window.ec || Object();
+		window.ec.config = window.ec.config || Object();
+		window.ec.config.navigation_scrolling = "DISABLED";
   		Ecwid.openPage('search');
   	} else if (page.type == "SEARCH") {
   		printHeaderBanner();
