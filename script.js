@@ -53,12 +53,12 @@ function changePreloader(element) {
 	if (document.querySelector(element)) {
 		// window.scrollTo(0,0);
 		// document.querySelector('#banner__search').style.display="none";
-		document.querySelector('#banner__search').style.visibility = "hidden";
+		document.querySelector('#banner__search').style.display = "none";
 	} else {
 		setTimeout(function(){
 			// window.scrollTo(0,0);
 			// document.querySelector('#banner__search').style.display="none";
-			document.querySelector('#banner__search').style.visibility = "hidden";
+			document.querySelector('#banner__search').style.display = "none";
 		}, 4000);
 	}
 }
