@@ -35,6 +35,7 @@ Ecwid.OnPageLoaded.add(function(page) {
 			}
 		}, 6000);
   	} else if (page.type == "PRODUCT") {
+  		addVersionToProductDetail ();
   		Ecwid.OnSetProfile.add(function(customer) {
 			$.get(`https://app.ecwid.com/api/v3/35020171/orders?customer=${customer.email}&token=secret_dYSNe7rT6hY73H8HhAZeJNQMdmXxifLz`, function(data) {
 				downloadInsteadOfBuy(data);
@@ -65,6 +66,12 @@ function hidePreloader(element) {
 			document.querySelector('#banner__search').style.display = "none";
 		}, 4000);
 	}
+}
+
+function addVersionToProductDetail () {
+	let li = document.createElement('li');
+	li.innerHTML = "модель для версии SketchUp'19 и выше";
+	document.querySelector('.product-details__product-description div ul').append(li);
 }
 
 function printHeaderBanner() {
