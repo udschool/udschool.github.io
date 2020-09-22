@@ -87,13 +87,11 @@ function removeHeaderBanner() {
 
 function printIp() {
 	$('#Ip').html('Индивидуальный предприниматель Афонская Полина Викторовна <br>ОГРНИП 318784700077123<br>ИНН: 246212605306<br>Расчетный счет: 40802810732250001716<br>Название Банка: ФИЛИАЛ "САНКТ-ПЕТЕРБУРГСКИЙ" АО "АЛЬФА-БАНК"<br>Кор.счет: 30101810600000000786<br>БИК: 044030786<br>');
-	document.querySelector('.footer-wrapper').style.background = '#fff';
 }
 
 function removeIp() {
 	if (document.getElementById('parentRemove')) {
 		document.getElementById('parentRemove').removeChild(document.getElementById('childRemove'));
-		document.querySelector('.footer-wrapper').style.background = '#e4e7e6';
 	}
 }
 
