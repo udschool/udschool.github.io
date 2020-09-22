@@ -50,11 +50,13 @@ Ecwid.OnPageLoaded.add(function(page) {
 function changePreloader(element) {
 	if (document.querySelector(element)) {
 		// window.scrollTo(0,0);
-		document.querySelector('#banner__search').style.display="none";
+		// document.querySelector('#banner__search').style.display="none";
+		document.querySelector('#banner__search').style.visibility = "hidden";
 	} else {
 		setTimeout(function(){
 			// window.scrollTo(0,0);
-			document.querySelector('#banner__search').style.display="none";
+			// document.querySelector('#banner__search').style.display="none";
+			document.querySelector('#banner__search').style.visibility = "hidden";
 		}, 4000);
 	}
 }
