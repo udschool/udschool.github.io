@@ -70,7 +70,7 @@ function hidePreloader(element) {
 
 function addVersionToProductDetail () {
 	let li = document.createElement('li');
-	li.innerHTML = "модель для версии SketchUp'19 и выше";
+	li.innerHTML = "модель для версии SketchUp'18 и выше";
 	document.querySelector('.product-details__product-description div ul').append(li);
 }
 
