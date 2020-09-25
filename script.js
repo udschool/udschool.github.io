@@ -71,7 +71,6 @@ function customerProducts(customer, callback) {
         data.items.forEach(function (orders) {
             orders.items.forEach(function(item) {
                 bought_product.push(item.productId)
-                console.log(item)
             })
         })
     });
@@ -97,10 +96,11 @@ function inCartProductStatus(products) {
 }
 
 function inBuyProductStatus(products) {
-	console.log(products)
 	allProducts = document.querySelector('.grid-product')
 	products.forEach(function(product) {
+		console.log(product)
 		if (document.querySelector(`.grid-product--id-${product}`)) {
+			console.log('таск выполнен')
 			document.querySelector(`.grid-product--id-${product}`).querySelector('.in_buy').style.display = "block";
 		}
 	})
