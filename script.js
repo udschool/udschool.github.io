@@ -85,6 +85,12 @@ function cartProducts(cart, callback) {
 	callback(cart_product);
 }
 
+function inBuyProductStatus(ids) {
+	console.log(ids);
+	ids.forEach(function(id) {
+		console.log(id);
+	});
+}
 
 function inCartProductStatus(products) {
 	products.forEach(function(product) {
@@ -92,13 +98,6 @@ function inCartProductStatus(products) {
 			document.querySelector(`.grid-product--id-${product}`).querySelector('.in_cart').style.display = "block";
 		}
 	})
-}
-
-function inBuyProductStatus(ids) {
-	console.log(ids);
-	ids.forEach(function(id) {
-		console.log(id);
-	});
 }
 
 
