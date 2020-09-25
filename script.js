@@ -18,40 +18,47 @@ Ecwid.OnPageLoaded.add(function(page) {
 		window.ec.config.navigation_scrolling = "DISABLED";
   		Ecwid.openPage('search');
   	} else if (page.type == "SEARCH") {
+  		$('.in_cart').hide();
+  		$('.in_buy').hide();
   		printHeaderBanner();
+  		a = document.querySelectorAll('.grid-product')
+		a.forEach(function(element){
+			let inCart = document.createElement('div');
+			inCart.classList.add('in_cart')
+			inCart.innerHTML = "В корзине";
+			element.querySelector('.grid-product__wrap-inner').append(inCart);
+
+			let inBuy = document.createElement('div');
+			inBuy.classList.add('in_buy');
+			inBuy.innerHTML = "скачать";
+			element.querySelector('.grid-product__wrap-inner').append(inBuy);
+
+			let addHeight = document.createElement('div');
+			addHeight.classList.add('add_height');
+			element.querySelector('.grid-product__wrap-inner').append(addHeight);
+		})
+
+		Ecwid.OnSetProfile.add(function(customer) {
+			var bought_product = [];
+		    $.get(`https://app.ecwid.com/api/v3/35020171/orders?customer=nevacityservice@yandex.ru&token=secret_dYSNe7rT6hY73H8HhAZeJNQMdmXxifLz`, function(data) {
+		        data.items.forEach(function (orders) {
+		            orders.items.forEach(function(item) {
+		                bought_product.push(item.productId)
+		            })
+		        })
+		    });
+		});
+
+		Ecwid.Cart.get(function(cart) {
+		  var cart_product = []
+		  cart.items.forEach(function(item) {
+		  	cart_product.push(item.product.id);
+		  });
+		});
 
   		printIp();
 
-  // 		document.querySelectorAll('.form-control__button.form-control__button--icon-center').forEach(function(el){
-		//     el.addEventListener("click", function(e) {
-		//     	let baseElement = e.target;
-		//     	let p = document.createElement('p');
-		//     	p.classList.add('inCartStorefront')
-		// 		p.innerHTML = "В корзине";
-		//         baseElement.closest(".grid-product__button").replaceWith(p)
-		//     });
-		// });
-
-  		Ecwid.OnSetProfile.add(function(customer) {
-			$.get(`https://app.ecwid.com/api/v3/35020171/orders?customer=${customer.email}&token=secret_dYSNe7rT6hY73H8HhAZeJNQMdmXxifLz`, function(data) {
-				hiddenProductsFromStorefront(data);
-			});
-		});
-
-		// Ecwid.Cart.get(function(cart) {
-		//   inCartProductsStorefront(cart.items);
-		// });
-
 		hidePreloader('.grid__products');
-
-  // 		setTimeout(()=>{
-		// 	if (!document.querySelector('.ec-filter__alert')) {
-		// 		let div = document.createElement('div');
-		// 		div.className = 'ec-filter__alert'
-		// 		div.innerHTML = "<strong>ФИЛЬТРЫ:</strong>";
-		// 		document.querySelector('ec-filter--attribute-041e044204340435043b043e0447043d044b0435-043c043004420435044004380430043b044b').append(div);
-		// 	}
-		// }, 6000);
   	} else if (page.type == "PRODUCT") {
   		addVersionToProductDetail ();
   		Ecwid.OnSetProfile.add(function(customer) {
@@ -67,6 +74,26 @@ Ecwid.OnPageLoaded.add(function(page) {
   		hidePreloader('.ec-cart');
   	}
 });
+
+
+function inCartProductStatus(products) {
+	allProducts = document.querySelector('.grid-product')
+	products.forEach(function(product) {
+		if (document.querySelector(`.grid-product--id-${product}`)) {
+			document.querySelector(`.grid-product--id-${product}`).querySelector('.in_cart').style.display = "block";
+		}
+	})
+}
+
+function inBuyProductStatus(products) {
+	allProducts = document.querySelector('.grid-product')
+	products.forEach(function(product) {
+		if (document.querySelector(`.grid-product--id-${product}`)) {
+			document.querySelector(`.grid-product--id-${product}`).querySelector('.in_buy').style.display = "block";
+		}
+	})
+}
+
 
 function inCartProductsStorefront(products) {
     products.forEach(function(product) {
