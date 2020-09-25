@@ -20,6 +20,7 @@ Ecwid.OnPageLoaded.add(function(page) {
   	} else if (page.type == "SEARCH") {
   		$('.in_cart').hide();
   		$('.in_buy').hide();
+
   		printHeaderBanner();
   		a = document.querySelectorAll('.grid-product')
 		a.forEach(function(element){
@@ -49,6 +50,8 @@ Ecwid.OnPageLoaded.add(function(page) {
 		  cartProducts(cart, inCartProductStatus.bind(this))
 		});
 
+		listenClickProduct()
+
   		printIp();
 
 		hidePreloader('.grid__products');
@@ -67,6 +70,17 @@ Ecwid.OnPageLoaded.add(function(page) {
   		hidePreloader('.ec-cart');
   	}
 });
+
+
+function listenClickProduct() {
+	elements = document.querySelectorAll('.form-control__button--icon-center');
+	elements.forEach(function(element) {
+		element.addEventListener("click", function(e) {
+			product = e.target.closest('.grid-product')
+			product.querySelector('.in_cart').style.display='block'
+		})
+	})
+}
 
 function customerProducts(data, callback) {
 	var buy_product = [];
