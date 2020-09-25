@@ -38,9 +38,9 @@ Ecwid.OnPageLoaded.add(function(page) {
 			element.querySelector('.grid-product__wrap-inner').append(addHeight);
 		});
 
-		Ecwid.OnSetProfile.add(function(customer) {
-			customerProducts(customer, inBuyProductStatus.bind(this))
-		});
+		// Ecwid.OnSetProfile.add(function(customer) {
+		// 	customerProducts(customer, inBuyProductStatus.bind(this))
+		// });
 
 		Ecwid.Cart.get(function(cart) {
 		  cartProducts(cart, inCartProductStatus.bind(this))
