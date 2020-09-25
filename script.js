@@ -85,11 +85,11 @@ function cartProducts(cart, callback) {
 	callback(cart_product);
 }
 
-function inBuyProductStatus(ids) {
-	for (var i = 0, i < ids.length; i++) {
-		console.log(ids[i]);
-	}
-}
+// function inBuyProductStatus(ids) {
+// 	for (var i = 0, i < ids.length; i++) {
+// 		console.log(ids[i]);
+// 	}
+// }
 
 function inCartProductStatus(products) {
 	products.forEach(function(product) {
