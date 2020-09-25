@@ -57,8 +57,7 @@ function inCartProductsStorefront(products) {
     products.forEach(function(product) {
     	let element  = `.grid-product--id-${product.product.id}`;
     	$(element).children('.grid-product__wrap').children('.grid-product__wrap-inner').children('.grid-product__button').removeClass('grid-product__buy-now');
-    	$(element).children('.grid-product__wrap').children('.grid-product__wrap-inner').children('.grid-product__button').html(`<div class="download__wrapper"> <div class="download__btn" onclick="moveToCart()"> <span class="form-control__button-svg"> <span class="svg-icon"> <svg width="27" height="23" viewBox="0 0 27 23" xmlns="http://www.w3.org/2000/svg"> <path class="svg-line-check" d="M1.97 11.94L10.03 20 25.217 2" fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="3" stroke-linecap="round"></path> </svg> </span></span><span class="download__text">В корзине</span> </div></div>`);
-    	console.log(document.querySelector(element));
+    	$(element).children('.grid-product__wrap').children('.grid-product__wrap-inner').children('.grid-product__button').html(`<div class="download__wrapper" onclick="moveToCart()"> <div class="download__btn"> <span class="form-control__button-svg"> </span> <span class="download__text">В корзине</span> </div></div>`);
     });
 }
 
