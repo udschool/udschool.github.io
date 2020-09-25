@@ -75,6 +75,8 @@ function customerProducts(customer, callback) {
         })
     });
     callback(bought_product);
+    console.log(bought_product);
+    console.log(customer);
 }
 
 function cartProducts(cart, callback) {
@@ -83,6 +85,7 @@ function cartProducts(cart, callback) {
 		cart_product.push(item.product.id);
 	});
 	callback(cart_product);
+	console.log(cart_product);
 }
 
 
