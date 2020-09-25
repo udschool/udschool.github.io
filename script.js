@@ -36,24 +36,14 @@ Ecwid.OnPageLoaded.add(function(page) {
 			let addHeight = document.createElement('div');
 			addHeight.classList.add('add_height');
 			element.querySelector('.grid-product__wrap-inner').append(addHeight);
-		})
+		});
 
 		Ecwid.OnSetProfile.add(function(customer) {
-			var bought_product = [];
-		    $.get(`https://app.ecwid.com/api/v3/35020171/orders?customer=nevacityservice@yandex.ru&token=secret_dYSNe7rT6hY73H8HhAZeJNQMdmXxifLz`, function(data) {
-		        data.items.forEach(function (orders) {
-		            orders.items.forEach(function(item) {
-		                bought_product.push(item.productId)
-		            })
-		        })
-		    });
+			customerProducts(customer, inBuyProductStatus.bind(this))
 		});
 
 		Ecwid.Cart.get(function(cart) {
-		  var cart_product = []
-		  cart.items.forEach(function(item) {
-		  	cart_product.push(item.product.id);
-		  });
+		  cartProducts(cart, inCartProductStatus.bind(this))
 		});
 
   		printIp();
@@ -74,6 +64,26 @@ Ecwid.OnPageLoaded.add(function(page) {
   		hidePreloader('.ec-cart');
   	}
 });
+
+function customerProducts(customer, callback) {
+	var bought_product = [];
+    $.get(`https://app.ecwid.com/api/v3/35020171/orders?customer=nevacityservice@yandex.ru&token=secret_dYSNe7rT6hY73H8HhAZeJNQMdmXxifLz`, function(data) {
+        data.items.forEach(function (orders) {
+            orders.items.forEach(function(item) {
+                bought_product.push(item.productId)
+            })
+        })
+    });
+    callback(bought_product);
+}
+
+function cartProducts(cart, callback) {
+	var cart_product = []
+	cart.items.forEach(function(item) {
+		cart_product.push(item.product.id);
+	});
+	callback(cart_product);
+}
 
 
 function inCartProductStatus(products) {
