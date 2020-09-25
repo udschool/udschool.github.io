@@ -94,9 +94,9 @@ function inCartProductStatus(products) {
 	})
 }
 
-function inBuyProductStatus(products) {
-	console.log(products);
-	products.forEach(function(id) {
+function inBuyProductStatus(ids) {
+	console.log(ids);
+	ids.forEach(function(id) {
 		console.log(id);
 	});
 }
