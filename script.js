@@ -38,9 +38,12 @@ Ecwid.OnPageLoaded.add(function(page) {
 			element.querySelector('.grid-product__wrap-inner').append(addHeight);
 		});
 
-		// Ecwid.OnSetProfile.add(function(customer) {
-		// 	customerProducts(customer, inBuyProductStatus.bind(this))
-		// });
+		Ecwid.OnSetProfile.add(function(customer) {
+			$.get(`https://app.ecwid.com/api/v3/35020171/orders?customer=${customer.email}&token=secret_dYSNe7rT6hY73H8HhAZeJNQMdmXxifLz`, function(data) {
+		        customerProducts(data, inBuyProductStatus.bind(this))
+		    });
+			
+		});
 
 		Ecwid.Cart.get(function(cart) {
 		  cartProducts(cart, inCartProductStatus.bind(this))
@@ -65,16 +68,14 @@ Ecwid.OnPageLoaded.add(function(page) {
   	}
 });
 
-function customerProducts(customer, callback) {
-	var bought_product = [];
-    $.get(`https://app.ecwid.com/api/v3/35020171/orders?customer=${customer.email}&token=secret_dYSNe7rT6hY73H8HhAZeJNQMdmXxifLz`, function(data) {
-        data.items.forEach(function (orders) {
-            orders.items.forEach(function(item) {
-                bought_product.push(item.productId)
-            })
+function customerProducts(data, callback) {
+	var buy_product = [];
+    data.items.forEach(function (orders) {
+        orders.items.forEach(function(item) {
+            bought_product.push(item.productId)
         })
-    });
-    callback(bought_product);
+    })
+    callback(buy_product);
 }
 
 function cartProducts(cart, callback) {
@@ -85,11 +86,15 @@ function cartProducts(cart, callback) {
 	callback(cart_product);
 }
 
-// function inBuyProductStatus(ids) {
-// 	for (var i = 0, i < ids.length; i++) {
-// 		console.log(ids[i]);
-// 	}
-// }
+function buyProductStatus(products) {
+	console.log(products);
+	products.forEach(function(product) {
+		console.log(hello)
+		if (document.querySelector(`.grid-product--id-${product}`)) {
+			document.querySelector(`.grid-product--id-${product}`).querySelector('.in_buy').style.display = "block";
+		}
+	})
+}
 
 function inCartProductStatus(products) {
 	products.forEach(function(product) {
