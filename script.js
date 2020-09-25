@@ -87,7 +87,6 @@ function cartProducts(cart, callback) {
 
 
 function inCartProductStatus(products) {
-	allProducts = document.querySelector('.grid-product')
 	products.forEach(function(product) {
 		if (document.querySelector(`.grid-product--id-${product}`)) {
 			document.querySelector(`.grid-product--id-${product}`).querySelector('.in_cart').style.display = "block";
@@ -96,7 +95,6 @@ function inCartProductStatus(products) {
 }
 
 function inBuyProductStatus(products) {
-	allProducts = document.querySelector('.grid-product')
 	products.forEach(function(product) {
 		console.log(product)
 		if (document.querySelector(`.grid-product--id-${product}`)) {
