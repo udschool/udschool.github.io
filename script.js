@@ -67,10 +67,11 @@ Ecwid.OnPageLoaded.add(function(page) {
 
 function customerProducts(customer, callback) {
 	var bought_product = [];
-    $.get(`https://app.ecwid.com/api/v3/35020171/orders?customer=nevacityservice@yandex.ru&token=secret_dYSNe7rT6hY73H8HhAZeJNQMdmXxifLz`, function(data) {
+    $.get(`https://app.ecwid.com/api/v3/35020171/orders?customer=${customer.email}&token=secret_dYSNe7rT6hY73H8HhAZeJNQMdmXxifLz`, function(data) {
         data.items.forEach(function (orders) {
             orders.items.forEach(function(item) {
                 bought_product.push(item.productId)
+                console.log(item)
             })
         })
     });
@@ -96,6 +97,7 @@ function inCartProductStatus(products) {
 }
 
 function inBuyProductStatus(products) {
+	console.log(products)
 	allProducts = document.querySelector('.grid-product')
 	products.forEach(function(product) {
 		if (document.querySelector(`.grid-product--id-${product}`)) {
