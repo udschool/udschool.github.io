@@ -36,7 +36,6 @@ Ecwid.OnPageLoaded.add(function(page) {
 
 		document.querySelectorAll('.form-control__button.form-control__button--icon-center').forEach(function(el){
 		    el.addEventListener("click", function(e) {
-		    	var classesList = [];
 		    	let baseElement = e.target;
 		    	let p = document.createElement('p');
 		    	p.classList.add('inCartStorefront')
@@ -72,8 +71,10 @@ Ecwid.OnPageLoaded.add(function(page) {
 function inCartProductsStorefront(products) {
     products.forEach(function(product) {
     	let element  = `.grid-product--id-${product.product.id}`;
-    	$(element).children('.grid-product__wrap').children('.grid-product__wrap-inner').children('.grid-product__button').removeClass('grid-product__buy-now');
-    	$(element).children('.grid-product__wrap').children('.grid-product__wrap-inner').children('.grid-product__button').html(`<p>В корзине</p>`);
+    	let p = document.createElement('p');
+    	p.classList.add('inCartStorefront')
+		p.innerHTML = "В корзине";
+		document.querySelector(element).querySelector(".grid-product__button").replaceWith(p)
     });
 }
 
