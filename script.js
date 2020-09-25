@@ -19,16 +19,32 @@ Ecwid.OnPageLoaded.add(function(page) {
   		Ecwid.openPage('search');
   	} else if (page.type == "SEARCH") {
   		printHeaderBanner();
+
   		printIp();
+
   		Ecwid.OnSetProfile.add(function(customer) {
 			$.get(`https://app.ecwid.com/api/v3/35020171/orders?customer=${customer.email}&token=secret_dYSNe7rT6hY73H8HhAZeJNQMdmXxifLz`, function(data) {
 				hiddenProductsFromStorefront(data);
 			});
 		});
+
 		Ecwid.Cart.get(function(cart) {
 		  inCartProductsStorefront(cart.items);
 		});
+
 		hidePreloader('.grid__products');
+
+		document.querySelectorAll('.form-control__button.form-control__button--icon-center').forEach(function(el){
+		    el.addEventListener("click", function(e) {
+		    	var classesList = [];
+		    	let baseElement = e.target;
+		    	let p = document.createElement('p');
+		    	p.classList.add('inCartStorefront')
+				p.innerHTML = "В корзине";
+		        baseElement.closest(".grid-product__button").replaceWith(p)
+		    });
+		});
+
   		setTimeout(()=>{
 			if (!document.querySelector('.ec-filter__alert')) {
 				let div = document.createElement('div');
