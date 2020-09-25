@@ -72,7 +72,7 @@ function customerProducts(data, callback) {
 	var buy_product = [];
     data.items.forEach(function (orders) {
         orders.items.forEach(function(item) {
-            bought_product.push(item.productId)
+            buy_product.push(item.productId)
         })
     })
     callback(buy_product);
