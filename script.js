@@ -75,8 +75,6 @@ function customerProducts(customer, callback) {
         })
     });
     callback(bought_product);
-    console.log(bought_product);
-    console.log(customer);
 }
 
 function cartProducts(cart, callback) {
@@ -85,7 +83,6 @@ function cartProducts(cart, callback) {
 		cart_product.push(item.product.id);
 	});
 	callback(cart_product);
-	console.log(cart_product);
 }
 
 
@@ -98,13 +95,12 @@ function inCartProductStatus(products) {
 }
 
 function inBuyProductStatus(products) {
-	products.forEach(function(product) {
-		console.log(product)
-		if (document.querySelector(`.grid-product--id-${product}`)) {
-			console.log('таск выполнен')
-			document.querySelector(`.grid-product--id-${product}`).querySelector('.in_buy').style.display = "block";
+	console.log(products);
+	products.forEach(function(id) {
+		if (document.querySelector(`.grid-product--id-${id}`)) {
+			document.querySelector(`.grid-product--id-${id}`).querySelector('.in_cart').style.display = "block";
 		}
-	})
+	});
 }
 
 
