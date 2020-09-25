@@ -40,7 +40,7 @@ Ecwid.OnPageLoaded.add(function(page) {
 
 		Ecwid.OnSetProfile.add(function(customer) {
 			$.get(`https://app.ecwid.com/api/v3/35020171/orders?customer=${customer.email}&token=secret_dYSNe7rT6hY73H8HhAZeJNQMdmXxifLz`, function(data) {
-		        customerProducts(data, inBuyProductStatus.bind(this))
+		        customerProducts(data, buyProductStatus.bind(this))
 		    });
 			
 		});
