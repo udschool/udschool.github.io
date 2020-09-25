@@ -86,10 +86,9 @@ function cartProducts(cart, callback) {
 }
 
 function inBuyProductStatus(ids) {
-	console.log(ids);
-	ids.forEach(function(id) {
-		console.log(id);
-	});
+	for (var i = 0, i < ids.length; i++) {
+		console.log(ids[i]);
+	}
 }
 
 function inCartProductStatus(products) {
