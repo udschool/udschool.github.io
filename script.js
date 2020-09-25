@@ -89,7 +89,6 @@ function cartProducts(cart, callback) {
 function buyProductStatus(products) {
 	console.log(products);
 	products.forEach(function(product) {
-		console.log(hello)
 		if (document.querySelector(`.grid-product--id-${product}`)) {
 			document.querySelector(`.grid-product--id-${product}`).querySelector('.in_buy').style.display = "block";
 		}
