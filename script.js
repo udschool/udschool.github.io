@@ -97,9 +97,7 @@ function inCartProductStatus(products) {
 function inBuyProductStatus(products) {
 	console.log(products);
 	products.forEach(function(id) {
-		if (document.querySelector(`.grid-product--id-${id}`)) {
-			document.querySelector(`.grid-product--id-${id}`).querySelector('.in_cart').style.display = "block";
-		}
+		console.log(id);
 	});
 }
 
