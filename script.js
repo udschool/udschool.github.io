@@ -1,9 +1,7 @@
 Ecwid.OnPageLoaded.add(function(page) {
 	if (page.type == "ACCOUNT_SETTINGS") {
 		Ecwid.OnSetProfile.add(function(customer) {
-			$.get(`https://app.ecwid.com/api/v3/35020171/orders?customer=${customer.email}&token=secret_dYSNe7rT6hY73H8HhAZeJNQMdmXxifLz`, function(data) {
-				printProductsInCart(data, renderProducts.bind(this));
-			});
+			printLk(customer.email);
 		});
 		removeHeaderBanner();
 		removeIp();
@@ -226,4 +224,260 @@ function downloadInsteadOfBuy(orders) {
 
 function openProductDetail(productId) {
 	Ecwid.openPage('product', {'id': productId});
+}
+
+function printLk(email) {
+    "use strict";
+
+	const e = React.createElement;
+
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+	class App extends React.Component {
+	  constructor(...args) {
+	    super(...args);
+
+	    _defineProperty(this, "state", {
+	      selectedCategoryId: null,
+	      activeProducts: [],
+	      products: [],
+	      activeCategories: [],
+	      categories: [{
+	        id: '01',
+	        name: 'Мебель'
+	      }, {
+	        id: '02',
+	        name: 'Детская'
+	      }, {
+	        id: '03',
+	        name: 'Сантехника. Мебель для сан. узла'
+	      }, {
+	        id: '04',
+	        name: 'Освещение. Электрика'
+	      }, {
+	        id: '05',
+	        name: 'Техника'
+	      }, {
+	        id: '06',
+	        name: 'Элементы интерьера'
+	      }, {
+	        id: '07',
+	        name: 'Декор для кухни'
+	      }, {
+	        id: '08',
+	        name: 'Декор для ванной'
+	      }, {
+	        id: '09',
+	        name: 'Декор для детской'
+	      }, {
+	        id: '10',
+	        name: 'Декор универсальный'
+	      }, {
+	        id: '11',
+	        name: 'Растения'
+	      }, {
+	        id: '12',
+	        name: 'Модели для животных'
+	      }, {
+	        id: '13',
+	        name: 'Другие'
+	      }, {
+	        id: '14',
+	        name: 'Отделочные материалы'
+	      }],
+	      loading: true
+	    });
+	  }
+
+	  categoryClickHandler(category) {
+	    if (category) {
+	      console.log(category.id);
+	      const activeProducts = [];
+	      this.state.products.forEach(product => {
+	        if (product.sku.substring(0, 2) === category.id) {
+	          activeProducts.push(product);
+	        }
+	      });
+	      this.setState({
+	        selectedCategoryId: category.id,
+	        activeProducts: activeProducts
+	      });
+	    } else {
+	      this.setState({
+	        selectedCategoryId: null,
+	        activeProducts: this.state.products
+	      });
+	    }
+	  }
+
+	  fetchCategories(productList) {
+	    const activeCategories = [];
+	    productList.forEach(product => {
+	      if (activeCategories.indexOf(product.sku.substring(0, 2)) === -1) {
+	        activeCategories.push(product.sku.substring(0, 2));
+	      }
+	    });
+	    this.state.categories.forEach((category, index) => {
+	      if (activeCategories.indexOf(category.id) !== -1) {
+	        this.setState({
+	          activeCategories: this.state.activeCategories.concat(category)
+	        });
+	      }
+	    });
+	  }
+
+	  printProducts(products) {
+	    return products.map((product, index) => {
+	      return /*#__PURE__*/React.createElement("div", {
+	        key: index,
+	        className: "product__wrap-inner",
+	        style: {
+	          "width": "200" + "px",
+	          "margin": "10" + "px"
+	        },
+	        onClick: `openProductDetail(${product.productId})`
+	      }, /*#__PURE__*/React.createElement("a", {
+	        href: `https://3dud.ru/?store-page=${product.nameTranslated.ru}-p${product.productId}`
+	      }, /*#__PURE__*/React.createElement("div", {
+	        className: "product__spacer"
+	      }, /*#__PURE__*/React.createElement("div", {
+	        className: "product__spacer-inner"
+	      })), /*#__PURE__*/React.createElement("div", {
+	        className: "product__bg",
+	        style: {
+	          "backgroundColor": "rgb(255, 255, 255)"
+	        }
+	      }), /*#__PURE__*/React.createElement("div", {
+	        className: "product__image-wrap"
+	      }, /*#__PURE__*/React.createElement("img", {
+	        src: `${product.imageUrl}`,
+	        title: product.name,
+	        className: "product__picture",
+	        srcSet: `${product.imageUrl} 1x, ${product.imageUrl} 2x`,
+	        style: {
+	          "width": "100%",
+	          "height": "100%"
+	        }
+	      })), /*#__PURE__*/React.createElement("div", {
+	        className: "product__shadow ec-text-muted"
+	      }, /*#__PURE__*/React.createElement("div", {
+	        className: "product__shadow-inner",
+	        style: {
+	          "zIndex": "1",
+	          "textAlign": "center"
+	        }
+	      }, product.name)), /*#__PURE__*/React.createElement("div", {
+	        className: "clearfix"
+	      }), /*#__PURE__*/React.createElement("div", {
+	        className: "product__hover-wrap"
+	      })), /*#__PURE__*/React.createElement("a", {
+	        href: `${product.files[0].customerUrl}`,
+	        style: {
+	          "textDecoration": "inherit",
+	          "color": "inherit"
+	        }
+	      }, /*#__PURE__*/React.createElement("div", {
+	        className: "product__button product__buy-now",
+	        style: {
+	          "textAlign": "center"
+	        }
+	      }, /*#__PURE__*/React.createElement("div", {
+	        className: "form-control form-control--button form-control--small form-control--secondary form-control--animated form-control--done"
+	      }, /*#__PURE__*/React.createElement("button", {
+	        className: "form-control__button form-control__button--icon-center",
+	        type: "button"
+	      }, /*#__PURE__*/React.createElement("span", {
+	        className: "form-control__button-text"
+	      }, "\u0421\u043A\u0430\u0447\u0430\u0442\u044C"))))));
+	    });
+	  }
+
+	  printCategories(categories) {
+	    const selectedCategoryId = this.state.selectedCategoryId;
+	    return categories.map((category, index) => {
+	      const cls = ['grid__category-inner'];
+
+	      if (selectedCategoryId === category.id) {
+	        cls.push('category__selected');
+	      }
+
+	      return /*#__PURE__*/React.createElement("div", {
+	        className: cls.join(' '),
+	        key: index,
+	        style: {
+	          "cursor": "pointer"
+	        },
+	        onClick: () => {
+	          this.categoryClickHandler(category);
+	        }
+	      }, /*#__PURE__*/React.createElement("p", null, category.name));
+	    });
+	  }
+
+	  async componentDidMount() {
+	    try {
+	      const products = [];
+	      const token = 'secret_dYSNe7rT6hY73H8HhAZeJNQMdmXxifLz';
+	      const email = 'nevacityservice@yandex.ru';
+	      const response = await axios.get(`https://app.ecwid.com/api/v3/35020171/orders?customer=${email}&token=${token}`);
+	      response.data.items.forEach(obj => {
+	        obj.items.forEach(item => {
+	          products.push(item);
+	        });
+	      });
+	      this.setState({
+	        activeProducts: products,
+	        products: products,
+	        loading: false
+	      });
+	      this.fetchCategories(this.state.products);
+	    } catch (e) {
+	      console.log(e);
+	    }
+	  }
+
+	  render() {
+	    return /*#__PURE__*/React.createElement("div", {
+	      className: "account-page__wrapper"
+	    }, this.state.loading ? /*#__PURE__*/React.createElement("p", {
+	      style: {
+	        "textAlign": "right"
+	      }
+	    }, "\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0430 ...") : /*#__PURE__*/React.createElement("div", {
+	      style: {
+	        'display': 'flex'
+	      }
+	    }, /*#__PURE__*/React.createElement("div", {
+	      className: "categories__wrapper"
+	    }, this.state.selectedCategoryId ? /*#__PURE__*/React.createElement("div", {
+	      className: "grid__category-inner",
+	      style: {
+	        "cursor": "pointer"
+	      },
+	      onClick: () => {
+	        this.categoryClickHandler();
+	      }
+	    }, /*#__PURE__*/React.createElement("p", null, "\u0412\u0441\u0435")) : /*#__PURE__*/React.createElement("div", {
+	      className: "grid__category-inner category__selected",
+	      style: {
+	        "cursor": "pointer"
+	      },
+	      onClick: () => {
+	        this.categoryClickHandler();
+	      }
+	    }, /*#__PURE__*/React.createElement("p", null, "\u0412\u0441\u0435")), this.printCategories(this.state.activeCategories)), /*#__PURE__*/React.createElement("div", {
+	      className: "products__wrapper",
+	      style: {
+	        'display': 'flex',
+	        'flexWrap': 'wrap'
+	      }
+	    }, this.state.activeProducts.length !== 0 ? this.printProducts(this.state.activeProducts) : /*#__PURE__*/React.createElement("p", null, "\u0421\u043F\u0438\u0441\u043E\u043A \u043F\u0440\u043E\u0434\u0443\u043A\u0442\u043E\u0432 \u043F\u0443\u0441\u0442."))));
+	  }
+
+	}
+
+	const domContainer = document.querySelector('#lk');
+	ReactDOM.render(e(App,{
+	      email: email
+	    }), domContainer);
 }
