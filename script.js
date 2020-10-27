@@ -5,7 +5,7 @@ Ecwid.OnPageLoaded.add(function(page) {
 		});
 		removeHeaderBanner();
 		removeIp();
-		hidePreloader('.grid__products');
+		hidePreloader('.ec-confirmation__steps');
   	} else if (page.type == "SIGN_IN") {
   		removeHeaderBanner();
 		removeIp();
@@ -490,7 +490,7 @@ function printLk(email) {
 
 	}
 
-	const domContainer = document.querySelector('.grid__products');
+	const domContainer = document.querySelector('.ec-confirmation__steps');
 	ReactDOM.render(e(App,{
 	      email: email
 	    }), domContainer);
