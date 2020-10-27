@@ -227,6 +227,7 @@ function openProductDetail(productId) {
 }
 
 function printLk(email) {
+    console.log(email)
     "use strict";
 
 	const e = React.createElement;
@@ -328,7 +329,7 @@ function printLk(email) {
 
 	  printProducts(products) {
 	    return products.map((product, index) => {
-	      return /*#__PURE__*/React.createElement("div", {
+	      return product.name === "Подписка 3dud" || product.name === "Покупка всех моделей, загруженных до 13.10.2020" ? null : /*#__PURE__*/React.createElement("div", {
 	        key: index,
 	        className: "product__wrap-inner",
 	        style: {
@@ -370,7 +371,7 @@ function printLk(email) {
 	        className: "clearfix"
 	      }), /*#__PURE__*/React.createElement("div", {
 	        className: "product__hover-wrap"
-	      })), /*#__PURE__*/React.createElement("a", {
+	      })), product.files[0] ? /*#__PURE__*/React.createElement("a", {
 	        href: `${product.files[0].customerUrl}`,
 	        style: {
 	          "textDecoration": "inherit",
@@ -388,7 +389,19 @@ function printLk(email) {
 	        type: "button"
 	      }, /*#__PURE__*/React.createElement("span", {
 	        className: "form-control__button-text"
-	      }, "\u0421\u043A\u0430\u0447\u0430\u0442\u044C"))))));
+	      }, "\u0421\u043A\u0430\u0447\u0430\u0442\u044C"))))) : /*#__PURE__*/React.createElement("div", {
+	        className: "product__button product__buy-now",
+	        style: {
+	          "textAlign": "center"
+	        }
+	      }, /*#__PURE__*/React.createElement("div", {
+	        className: "form-control form-control--button form-control--small form-control--secondary form-control--animated form-control--done"
+	      }, /*#__PURE__*/React.createElement("button", {
+	        className: "form-control__button form-control__button--icon-center",
+	        type: "button"
+	      }, /*#__PURE__*/React.createElement("span", {
+	        className: "form-control__button-text"
+	      }, "\u0414\u043E\u0441\u0442\u0443\u043F\u043D\u043E")))));
 	    });
 	  }
 
@@ -476,8 +489,8 @@ function printLk(email) {
 
 	}
 
-	const domContainer = document.querySelector('.ec-cart');
+	const domContainer = document.querySelector('#lk');
 	ReactDOM.render(e(App,{
 	      email: email
 	    }), domContainer);
-}
+	}
