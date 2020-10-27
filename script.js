@@ -489,7 +489,7 @@ function printLk(email) {
 
 	}
 
-	const domContainer = document.querySelector('#lk');
+	const domContainer = document.querySelector('.ec-cart');
 	ReactDOM.render(e(App,{
 	      email: email
 	    }), domContainer);
