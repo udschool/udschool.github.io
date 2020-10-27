@@ -418,7 +418,7 @@ function printLk(email) {
 	    try {
 	      const products = [];
 	      const token = 'secret_dYSNe7rT6hY73H8HhAZeJNQMdmXxifLz';
-	      const email = 'nevacityservice@yandex.ru';
+	      const email = this.props.email;
 	      const response = await axios.get(`https://app.ecwid.com/api/v3/35020171/orders?customer=${email}&token=${token}`);
 	      response.data.items.forEach(obj => {
 	        obj.items.forEach(item => {
