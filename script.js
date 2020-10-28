@@ -214,7 +214,6 @@ function hiddenProductsFromStorefront(orders) {
 function downloadInsteadOfBuy(orders) {
 	orders.items.forEach(function (entry){
 		entry.items.forEach(function(entry){
-			console.log(entry.sku)
 			let element = `.ecwid-productBrowser-ProductPage-${entry.productId}`;
 			if ($(element).length !== 0) {
 				if (entry.sku.substring(0,2)!=='V0') {
