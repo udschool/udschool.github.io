@@ -231,7 +231,6 @@ function openProductDetail(productId) {
 }
 
 function printLk(email) {
-    console.log(email)
     "use strict";
 
 	const e = React.createElement;
