@@ -248,6 +248,9 @@ function printLk(email) {
 	      products: [],
 	      activeCategories: [],
 	      categories: [{
+	        id: 'V0',
+	        name: 'Видео'
+	      }, {
 	        id: '01',
 	        name: 'Мебель'
 	      }, {
@@ -333,7 +336,7 @@ function printLk(email) {
 
 	  printProducts(products) {
 	    return products.map((product, index) => {
-	      return product.name === "Подписка 3dud" || product.name === "Покупка всех моделей, загруженных до 13.10.2020" ? null : /*#__PURE__*/React.createElement("div", {
+	      return product.name === "Подписка 3dud" || product.name === "Покупка всех моделей, загруженных до 13.10.2020" ? null : product.sku.substring(0, 2) === 'V0' ? /*#__PURE__*/React.createElement("div", {
 	        key: index,
 	        className: "product__wrap-inner",
 	        style: {
@@ -375,7 +378,82 @@ function printLk(email) {
 	        className: "clearfix"
 	      }), /*#__PURE__*/React.createElement("div", {
 	        className: "product__hover-wrap"
-	      })), product.files[0] ? /*#__PURE__*/React.createElement("a", {
+	      })), product.files[0].length !== 0 ? /*#__PURE__*/React.createElement("div", {
+	        className: "form-control form-control--flexible form-control--animated form-control__button--icon-center form-control--done"
+	      }, /*#__PURE__*/React.createElement("a", {
+	        href: `https://3dud.ru/?store-page=${product.nameTranslated.ru}-p${product.productId}`,
+	        target: "_blank",
+	        style: {
+	          "textDecoration": "inherit",
+	          "color": "inherit"
+	        }
+	      }, /*#__PURE__*/React.createElement("div", {
+	        className: "product__button product__buy-now",
+	        style: {
+	          "textAlign": "center"
+	        }
+	      }, /*#__PURE__*/React.createElement("div", {
+	        className: "form-control form-control--button form-control--small form-control--secondary form-control--animated form-control--done"
+	      }, /*#__PURE__*/React.createElement("button", {
+	        className: "form-control__button form-control__button--icon-center",
+	        type: "button"
+	      }, /*#__PURE__*/React.createElement("span", {
+	        className: "form-control__button-text"
+	      }, "\u0421\u043C\u043E\u0442\u0440\u0435\u0442\u044C"))))), /*#__PURE__*/React.createElement("script", null, "const player=new Plyr('#player');")) : /*#__PURE__*/React.createElement("div", {
+	        className: "product__button product__buy-now",
+	        style: {
+	          "textAlign": "center"
+	        }
+	      }, /*#__PURE__*/React.createElement("div", {
+	        className: "form-control form-control--button form-control--small form-control--secondary form-control--animated form-control--done"
+	      }, /*#__PURE__*/React.createElement("button", {
+	        className: "form-control__button form-control__button--icon-center",
+	        type: "button"
+	      }, /*#__PURE__*/React.createElement("span", {
+	        className: "form-control__button-text"
+	      }, "\u0414\u043E\u0441\u0442\u0443\u043F\u043D\u043E"))))) : /*#__PURE__*/React.createElement("div", {
+	        key: index,
+	        className: "product__wrap-inner",
+	        style: {
+	          "width": "200" + "px",
+	          "margin": "10" + "px"
+	        },
+	        onClick: `openProductDetail(${product.productId})`
+	      }, /*#__PURE__*/React.createElement("a", {
+	        href: `https://3dud.ru/?store-page=${product.nameTranslated.ru}-p${product.productId}`
+	      }, /*#__PURE__*/React.createElement("div", {
+	        className: "product__spacer"
+	      }, /*#__PURE__*/React.createElement("div", {
+	        className: "product__spacer-inner"
+	      })), /*#__PURE__*/React.createElement("div", {
+	        className: "product__bg",
+	        style: {
+	          "backgroundColor": "rgb(255, 255, 255)"
+	        }
+	      }), /*#__PURE__*/React.createElement("div", {
+	        className: "product__image-wrap"
+	      }, /*#__PURE__*/React.createElement("img", {
+	        src: `${product.imageUrl}`,
+	        title: product.name,
+	        className: "product__picture",
+	        srcSet: `${product.imageUrl} 1x, ${product.imageUrl} 2x`,
+	        style: {
+	          "width": "100%",
+	          "height": "100%"
+	        }
+	      })), /*#__PURE__*/React.createElement("div", {
+	        className: "product__shadow ec-text-muted"
+	      }, /*#__PURE__*/React.createElement("div", {
+	        className: "product__shadow-inner",
+	        style: {
+	          "zIndex": "1",
+	          "textAlign": "center"
+	        }
+	      }, product.name)), /*#__PURE__*/React.createElement("div", {
+	        className: "clearfix"
+	      }), /*#__PURE__*/React.createElement("div", {
+	        className: "product__hover-wrap"
+	      })), product.files[0].length !== 0 ? /*#__PURE__*/React.createElement("a", {
 	        href: `${product.files[0].customerUrl}`,
 	        style: {
 	          "textDecoration": "inherit",
@@ -491,7 +569,7 @@ function printLk(email) {
 	    }, this.state.activeProducts.length !== 0 ? this.printProducts(this.state.activeProducts) : /*#__PURE__*/React.createElement("p", null, "\u0421\u043F\u0438\u0441\u043E\u043A \u043F\u0440\u043E\u0434\u0443\u043A\u0442\u043E\u0432 \u043F\u0443\u0441\u0442."))));
 	  }
 
-	}
+}
 
 	const domContainer = document.querySelector('.ec-cart');
 	ReactDOM.render(e(App,{
